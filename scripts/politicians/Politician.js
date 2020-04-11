@@ -1,11 +1,15 @@
-<article class="politicians">
-  <section class="politician">
-    <header class="politician__name">
-      <h1>Charlene Harding</h1>
-    </header>
-    <div class="politician__info">
-      <div>Age: 45</div>
-      <div>Represents: Bethpage, Maine</div>
-    </div>
-  </section>
-</article>;
+export const Politician = (politicianObj) => {
+  return ` 
+    <article class="politicians">
+        <section class="politician">
+            <header class="politician__name">
+                <h1>${politicianObj.name.first}${politicianObj.name.last}</h1>
+            </header>
+            <div class="politician__info">
+                <div>Age: ${politicianObj.age}</div>
+                <div>Represents: ${politicianObj.district}</div>
+            </div>
+        </section>
+    </article>
+  `;
+};
