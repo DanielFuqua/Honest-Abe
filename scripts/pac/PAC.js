@@ -1,4 +1,9 @@
-export const PAC = (pacObj, corporationObj, corporateDonations) => {
+export const PAC = (pacObj, corporateDonations) => {
+  const formatter = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+    minimumFractionDigits: 0,
+  });
   return ` 
   
     <section class="pac">
@@ -9,10 +14,14 @@ export const PAC = (pacObj, corporationObj, corporateDonations) => {
         <div${pacObj.address}</div>
     </div>
     <div class="pac__donors">
-        <h2>Donors</h2>
+        <h4>Donors</h4>
         <ul>
-            <li>${corporationObj.company} $${corporateDonations.amount}</li>
-            <li>${corporationObj.company} $${corporateDonations.amount}</li>
+            ${corporateDonations
+              .map(
+                (cd) =>
+                  `<li>${cd.company} (${formatter.format(cd.amount)}) </li>`
+              )
+              .join("")}
         </ul>
     </div>
 </section>
