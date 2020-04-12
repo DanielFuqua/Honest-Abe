@@ -39,9 +39,42 @@ export const PACsList = () => {
             );
           }
         );
-        // pass pac and new array of our desired objects into pac component
 
-        const html = PAC(pacObj);
+        // If a corporation donated more than once set total amount to the first object with that corporationId.
+        for (
+          let i = arrayOfCorporateDonationsObjectsWithNames.length - 1;
+          i >= 0;
+          i--
+        ) {
+          for (let j = i - 1; j >= 0; j--) {
+            if (
+              arrayOfCorporateDonationsObjectsWithNames[i].corporationId ===
+              arrayOfCorporateDonationsObjectsWithNames[j].corporationId
+            ) {
+              const sumTotal =
+                arrayOfCorporateDonationsObjectsWithNames[i].amount +
+                arrayOfCorporateDonationsObjectsWithNames[j].amount;
+
+              arrayOfCorporateDonationsObjectsWithNames[j].amount = sumTotal;
+            }
+          }
+        }
+        console.log(arrayOfCorporateDonationsObjectsWithNames);
+
+        // remove objects without total donation amounts from arrayOfCorporateDonationsObjectsWithNames.
+
+        const corporationIds = {};
+        const finalArrayOfDesiredCorporateDonationObjects = arrayOfCorporateDonationsObjectsWithNames.filter(
+          (obj) => {
+            if (corporationIds[obj.corporationId]) {
+              return false;
+            }
+            corporationIds[obj.corporationId] = true;
+            return true;
+          }
+        );
+
+        const html = PAC(pac, finalArrayOfDesiredCorporateDonationObjects);
         return html;
       })
       .join("")}
