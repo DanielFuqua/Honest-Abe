@@ -1,6 +1,6 @@
 export const Politician = (politicianObj) => {
   return ` 
-    <article class="politicians">
+
         <section class="politician">
             <header class="politician__name">
                 <h1>${politicianObj.name.first}${politicianObj.name.last}</h1>
@@ -10,6 +10,5 @@ export const Politician = (politicianObj) => {
                 <div>Represents: ${politicianObj.district}</div>
             </div>
         </section>
-    </article>
   `;
 };

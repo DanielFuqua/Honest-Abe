@@ -7,12 +7,15 @@ export const PoliticiansList = () => {
   const politicians = usePoliticians();
 
   const render = () => {
-    contentTarget.innerHTML = politicians
+    contentTarget.innerHTML += `<article class="politicians">
+
+    ${politicians
       .map((politician) => {
         const html = Politician(politician);
         return html;
       })
-      .join("");
+      .join("")}
+      </article>`;
   };
 
   render();
