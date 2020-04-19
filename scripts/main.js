@@ -5,12 +5,13 @@ import { CorporationsList } from "./corporations/CorporationsList.js";
 import { getPACs } from "./pac/PACsProvider.js";
 import { getCorporateDonations } from "./CorporateDonationsProvider.js";
 import { PACsList } from "./pac/PACsList.js";
+import { getPacDonations } from "./PacDonationsProvider.js";
 
 getPoliticians()
-  .then(PoliticiansList)
-  .then(getCorporations)
-  .then(CorporationsList)
   .then(getPACs)
+  .then(getPacDonations)
   .then(getCorporations)
   .then(getCorporateDonations)
+  .then(PoliticiansList)
+  .then(CorporationsList)
   .then(PACsList);
