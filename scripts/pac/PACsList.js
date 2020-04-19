@@ -19,7 +19,6 @@ export const PACsList = () => {
         const arrayOfRelatedCorperateDonationObjects = corporateDonations.filter(
           (cd) => cd.pacId === pac.id
         );
-
         // find the corporation objects (name) who danoted to the pac.
 
         const arrayOfRelatedCorperationObjects = arrayOfRelatedCorperateDonationObjects.map(
@@ -29,16 +28,22 @@ export const PACsList = () => {
             });
           }
         );
+
         //Combine objects in each array with each other.
         const arrayOfCorporateDonationsObjectsWithNames = arrayOfRelatedCorperateDonationObjects.map(
           (relatedCorpDonObj, i) => {
+            // const corpDonation = relatedCorpDonObj;
+            // corpDonation.corporation = arrayOfRelatedCorperationObjects[i];
+            // console.log(corpDonation);
+            // return corpDonation;
+
             return Object.assign(
-              {},
               relatedCorpDonObj,
               arrayOfRelatedCorperationObjects[i]
             );
           }
         );
+        console.log(arrayOfCorporateDonationsObjectsWithNames);
 
         // If a corporation donated more than once set total amount to the first object with that corporationId.
         for (
@@ -59,10 +64,8 @@ export const PACsList = () => {
             }
           }
         }
-        console.log(arrayOfCorporateDonationsObjectsWithNames);
 
         // remove objects without total donation amounts from arrayOfCorporateDonationsObjectsWithNames.
-
         const corporationIds = {};
         const finalArrayOfDesiredCorporateDonationObjects = arrayOfCorporateDonationsObjectsWithNames.filter(
           (obj) => {

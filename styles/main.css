@@ -1,3 +1,7 @@
+@import "./pac.css";
+@import "./politician.css";
+@import "./corporation.css";
+
 .container {
   display: flex;
 }

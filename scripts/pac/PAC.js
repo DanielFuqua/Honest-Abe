@@ -11,7 +11,7 @@ export const PAC = (pacObj, corporateDonations) => {
         <h1>${pacObj.registeredName}</h1>
     </header>
     <div class="pac__info">
-        <div${pacObj.address}</div>
+        <div>${pacObj.address}</div>
     </div>
     <div class="pac__donors">
         <h4>Donors</h4>
@@ -25,5 +25,6 @@ export const PAC = (pacObj, corporateDonations) => {
         </ul>
     </div>
 </section>
+
     `;
 };
